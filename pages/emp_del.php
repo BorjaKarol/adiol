@@ -12,11 +12,10 @@ include'../includes/sidebar.php';
                    
 if ($Aa=='User'){
 ?>
-  <script type="text/javascript">
-    //then it will be redirected
-    alert("Restricted Page! You will be redirected to POS");
-    window.location = "pos.php";
-  </script>
+<script type="text/javascript">
+alert("Restricted Page! You will be redirected to POS");
+window.location = "pos.php";
+</script>
 <?php
   }
 }
@@ -27,9 +26,11 @@ if ($Aa=='User'){
     			$query = 'DELETE FROM employee WHERE EMPLOYEE_ID = ' . $_GET['id'];
     			$result = mysqli_query($db, $query) or die(mysqli_error($db));				
             ?>
-    			<script type="text/javascript">alert("Employee Successfully Deleted.");window.location = "employee.php";</script>					
-            <?php
-    			//break;
+<script type="text/javascript">
+alert("Employee Successfully Deleted.");
+window.location = "employee.php";
+</script>
+<?php
             }
 	}
 ?>

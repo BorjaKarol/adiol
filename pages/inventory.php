@@ -12,7 +12,6 @@ include'../includes/sidebar.php';
   if ($Aa=='User'){
 ?>
 <script type="text/javascript">
-//then it will be redirected
 alert("Restricted Page! You will be redirected to homepage");
 window.location = "index.php";
 </script>

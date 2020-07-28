@@ -13,34 +13,35 @@ include'../includes/sidebar.php';
                    
 if ($Aa=='User'){
            
-             ?>    <script type="text/javascript">
-                      //then it will be redirected
-                      alert("Restricted Page! You will be redirected to POS");
-                      window.location = "pos.php";
-                  </script>
-             <?php   }
+             ?> <script type="text/javascript">
+alert("Restricted Page! You will be redirected to POS");
+window.location = "pos.php";
+</script>
+<?php   }
                          
            
 }   
             ?>
-            
-            <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h4 class="m-2 font-weight-bold text-primary">Employee&nbsp;<a  href="#" data-toggle="modal" data-target="#employeeModal" type="button" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"><i class="fas fa-fw fa-plus"></i></a></h4>
-            </div>
-            
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
-                  <thead>
-                        <tr>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Role</th>
-                          <th>Action</th>
-                        </tr>
-                     </thead>
-                    <tbody>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 class="m-2 font-weight-bold text-primary">Employee&nbsp;<a href="#" data-toggle="modal"
+                data-target="#employeeModal" type="button" class="btn btn-primary bg-gradient-primary"
+                style="border-radius: 0px;"><i class="fas fa-fw fa-plus"></i></a></h4>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <?php                  
                         $query = 'SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, j.JOB_TITLE FROM employee e JOIN job j ON e.JOB_ID=j.JOB_ID';
                         $result = mysqli_query($db, $query) or die (mysqli_error($db));
@@ -66,13 +67,13 @@ if ($Aa=='User'){
                           </div> </td>';
                         echo '</tr> ';
                         }
-                    ?> 
-                                    
-                    </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+                    ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <?php
 include'../includes/footer.php';

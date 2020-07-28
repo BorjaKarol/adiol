@@ -8,9 +8,11 @@ include'../includes/connection.php';
     			$query = 'DELETE FROM product WHERE PRODUCT_ID = ' . $_GET['id'];
     			$result = mysqli_query($db, $query) or die(mysqli_error($db));				
             ?>
-    			<script type="text/javascript">alert("Product Successfully Deleted.");window.location = "inventory.php";</script>					
-            <?php
-    			//break;
+<script type="text/javascript">
+alert("Product Successfully Deleted.");
+window.location = "inventory.php";
+</script>
+<?php
             }
 	}
 ?>
