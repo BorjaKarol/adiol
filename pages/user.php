@@ -12,7 +12,6 @@ include'../includes/sidebar.php';
   if ($Aa=='User'){
 ?>
 <script type="text/javascript">
-//then it will be redirected
 alert("Restricted Page! You will be redirected to POS");
 window.location = "pos.php";
 </script>
@@ -20,7 +19,6 @@ window.location = "pos.php";
   }           
 }
 ?>
-<!-- ADMIN TABLE -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h4 class="m-2 font-weight-bold text-primary">Admin Account(s)</h4>
@@ -247,7 +245,7 @@ $opt .= "</select>";
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add User Account</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Storage Account</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>

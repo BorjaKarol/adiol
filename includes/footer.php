@@ -78,7 +78,6 @@ function off() {
     document.getElementById("overlay").style.display = "none";
 }
 
-//used in pos sa number only na textfields
 function isNumberKey(evt) {
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode != 46 && charCode > 31 &&
@@ -86,7 +85,6 @@ function isNumberKey(evt) {
         return false;
     return true;
 }
-//end of used in pos sa number only na textfields
 </script>
 
 </body>
@@ -95,7 +93,6 @@ function isNumberKey(evt) {
 
 <?php
   include 'modal.php';
-// JOB SELECT OPTION TAB
 $sql = "SELECT DISTINCT TYPE, TYPE_ID FROM type";
 $result = mysqli_query($db, $sql) or die ("Bad SQL: $sql");
 

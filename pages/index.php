@@ -108,7 +108,7 @@ window.location = "pos.php";
                             </div>
                             <div class="h6 mb-0 font-weight-bold text-gray-800">
                                 <?php 
-                        $query = "SELECT COUNT(*) FROM users WHERE TYPE_ID=2";
+                        $query = "SELECT COUNT(*) FROM users";
                         $result = mysqli_query($db, $query) or die(mysqli_error($db));
                         while ($row = mysqli_fetch_array($result)) {
                             echo "$row[0]";

@@ -16,7 +16,8 @@ window.location = "index.php";
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sales And Inventory</title>
+    <title>Adiol Trading | Inventory</title>
+    <link rel="icon" href="https://www.freeiconspng.com/uploads/sales-icon-7.png">
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2020 at 05:33 AM
+-- Generation Time: Jul 27, 2020 at 03:16 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `adiol`
+-- Database: `prince`
 --
 
 -- --------------------------------------------------------
@@ -172,6 +172,30 @@ INSERT INTO `location` (`LOCATION_ID`, `PROVINCE`, `CITY`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `manager`
+--
+
+CREATE TABLE `manager` (
+  `FIRST_NAME` varchar(50) DEFAULT NULL,
+  `LAST_NAME` varchar(50) DEFAULT NULL,
+  `LOCATION_ID` int(11) NOT NULL,
+  `EMAIL` varchar(50) DEFAULT NULL,
+  `PHONE_NUMBER` varchar(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `manager`
+--
+
+INSERT INTO `manager` (`FIRST_NAME`, `LAST_NAME`, `LOCATION_ID`, `EMAIL`, `PHONE_NUMBER`) VALUES
+('Prince Ly', 'Cesar', 113, 'PC@00', '09124033805'),
+('Emman', 'Adventures', 116, 'emman@', '09123346576'),
+('Bruce', 'Willis', 113, 'bruce@', NULL),
+('Regine', 'Santos', 111, 'regine@', '09123456789');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -235,6 +259,22 @@ CREATE TABLE `transaction` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transaction_details`
+--
+
+CREATE TABLE `transaction_details` (
+  `ID` int(11) NOT NULL,
+  `TRANS_D_ID` varchar(250) NOT NULL,
+  `PRODUCTS` varchar(250) NOT NULL,
+  `QTY` varchar(250) NOT NULL,
+  `PRICE` varchar(250) NOT NULL,
+  `EMPLOYEE` varchar(250) NOT NULL,
+  `ROLE` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `type`
 --
 
@@ -271,24 +311,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `EMPLOYEE_ID`, `USERNAME`, `PASSWORD`, `TYPE_ID`) VALUES
-(1, 1, 'adrian.lester', '51abb9636078defbf888d8457a7c76f85c8f114c', 1),
-(11, 5, 'storage.kenneth', '51abb9636078defbf888d8457a7c76f85c8f114c', 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `withdrawal_details`
---
-
-CREATE TABLE `withdrawal_details` (
-  `ID` int(11) NOT NULL,
-  `TRANS_D_ID` varchar(250) NOT NULL,
-  `PRODUCTS` varchar(250) NOT NULL,
-  `QTY` varchar(250) NOT NULL,
-  `PRICE` varchar(250) NOT NULL,
-  `EMPLOYEE` varchar(250) NOT NULL,
-  `ROLE` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(1, 1, 'adrian.lester', '51abb9636078defbf888d8457a7c76f85c8f114c', 1);
 
 --
 -- Indexes for dumped tables
@@ -329,6 +352,13 @@ ALTER TABLE `location`
   ADD PRIMARY KEY (`LOCATION_ID`);
 
 --
+-- Indexes for table `manager`
+--
+ALTER TABLE `manager`
+  ADD UNIQUE KEY `PHONE_NUMBER` (`PHONE_NUMBER`),
+  ADD KEY `LOCATION_ID` (`LOCATION_ID`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -352,6 +382,13 @@ ALTER TABLE `transaction`
   ADD KEY `CUST_ID` (`CUST_ID`);
 
 --
+-- Indexes for table `transaction_details`
+--
+ALTER TABLE `transaction_details`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `TRANS_D_ID` (`TRANS_D_ID`) USING BTREE;
+
+--
 -- Indexes for table `type`
 --
 ALTER TABLE `type`
@@ -364,13 +401,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `TYPE_ID` (`TYPE_ID`),
   ADD KEY `EMPLOYEE_ID` (`EMPLOYEE_ID`);
-
---
--- Indexes for table `withdrawal_details`
---
-ALTER TABLE `withdrawal_details`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `TRANS_D_ID` (`TRANS_D_ID`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -404,7 +434,7 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -416,19 +446,19 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `TRANS_ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `TRANS_ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `transaction_details`
+--
+ALTER TABLE `transaction_details`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `withdrawal_details`
---
-ALTER TABLE `withdrawal_details`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -440,6 +470,12 @@ ALTER TABLE `withdrawal_details`
 ALTER TABLE `employee`
   ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`),
   ADD CONSTRAINT `employee_ibfk_2` FOREIGN KEY (`JOB_ID`) REFERENCES `job` (`JOB_ID`);
+
+--
+-- Constraints for table `manager`
+--
+ALTER TABLE `manager`
+  ADD CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
 
 --
 -- Constraints for table `product`
@@ -459,7 +495,7 @@ ALTER TABLE `supplier`
 --
 ALTER TABLE `transaction`
   ADD CONSTRAINT `transaction_ibfk_3` FOREIGN KEY (`CUST_ID`) REFERENCES `customer` (`CUST_ID`),
-  ADD CONSTRAINT `transaction_ibfk_4` FOREIGN KEY (`TRANS_D_ID`) REFERENCES `withdrawal_details` (`TRANS_D_ID`);
+  ADD CONSTRAINT `transaction_ibfk_4` FOREIGN KEY (`TRANS_D_ID`) REFERENCES `transaction_details` (`TRANS_D_ID`);
 
 --
 -- Constraints for table `users`

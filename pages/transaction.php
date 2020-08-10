@@ -8,7 +8,6 @@ include'../includes/sidebar.php';
   
   while ($row = mysqli_fetch_assoc($result)) {
             $Aa = $row['TYPE'];
-                   
   if ($Aa=='User'){
 ?>
 <script type="text/javascript">
@@ -16,7 +15,7 @@ alert("Restricted Page! You will be redirected to POS");
 window.location = "pos.php";
 </script>
 <?php
-  }           
+  }
 }
             ?>
 <div class="card shadow mb-4">
@@ -35,14 +34,12 @@ window.location = "pos.php";
                     </tr>
                 </thead>
                 <tbody>
-
                     <?php                  
     $query = 'SELECT *, FIRST_NAME, LAST_NAME
               FROM transaction T
               JOIN customer C ON T.`CUST_ID`=C.`CUST_ID`
               ORDER BY TRANS_D_ID ASC';
         $result = mysqli_query($db, $query) or die (mysqli_error($db));
-      
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<tr>';
                 echo '<td>'. $row['TRANS_D_ID'].'</td>';
@@ -50,17 +47,16 @@ window.location = "pos.php";
                 echo '<td>'. $row['NUMOFITEMS'].'</td>';
                       echo '<td align="right">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="trans_view.php?action=edit & id='.$row['TRANS_ID'] . '"><i class="fas fa-fw fa-th-list"></i> View</a>
+                              <a type="button" class="btn btn-danger bg-gradient-primary"><i class="fas fa-fw fa-th-list"></i> Approve</a>
                           </div> </td>';
                 echo '</tr> ';
                         }
 ?>
-
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
 <?php
 include'../includes/footer.php';
 ?>
